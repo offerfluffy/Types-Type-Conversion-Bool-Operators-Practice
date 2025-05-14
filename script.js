@@ -87,21 +87,37 @@ function toBoolean(val) {
   if (val === null || val === undefined) return false;
   if (typeof val === "string") return !(val === "");
   if (typeof val === "number") return val !== 0 && !Number.isNaN(val);
-  if (typeof val === "object") return !(Object.keys(val).length === 0);
   if (Array.isArray(val)) return !(val.length === 0);
+  if (typeof val === "object") return !(Object.keys(val).length === 0);
   return Boolean(val);
 }
 
-console.log(toBoolean(""));        // false
-console.log(toBoolean("hello"));   // true
-console.log(toBoolean(0));         // false
-console.log(toBoolean(NaN));       // false
-console.log(toBoolean(5));         // true
-console.log(toBoolean([]));        // false
-console.log(toBoolean([1]));       // true
-console.log(toBoolean({}));        // false
-console.log(toBoolean({ a: 1 }));  // true
-console.log(toBoolean(false));     // false
-console.log(toBoolean(true));      // true
-console.log(toBoolean(null));      // false
+console.log(toBoolean("")); // false
+console.log(toBoolean("hello")); // true
+console.log(toBoolean(0)); // false
+console.log(toBoolean(NaN)); // false
+console.log(toBoolean(5)); // true
+console.log(toBoolean([])); // false
+console.log(toBoolean([1])); // true
+console.log(toBoolean({})); // false
+console.log(toBoolean({ a: 1 })); // true
+console.log(toBoolean(false)); // false
+console.log(toBoolean(true)); // true
+console.log(toBoolean(null)); // false
 console.log(toBoolean(undefined)); // false
+
+function myOr(a, b) {
+  if (Boolean(a) === true) {
+    return a;
+  } else {
+    return b;
+  }
+}
+
+function myAnd(a, b) {
+  if (Boolean(a)) {
+    return Boolean(b) ? b : a;
+  } else {
+    return a;
+  }
+}
