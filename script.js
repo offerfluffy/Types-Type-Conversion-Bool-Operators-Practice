@@ -83,4 +83,24 @@ console.log([] + {}); // object Object toString returns object
 console.log({} + []); // object // in node js is 0
 console.log({} + {}); // object object
 
+function toBoolean(val) {
+  if (typeof val === "string") return !(val === "");
+  if (typeof val === "number") return val !== 0 && !Number.isNaN(val);
+  if (typeof val === "object") return !(Object.keys(val).length === 0);
+  if (Array.isArray(val)) return !(val.length === 0);
+  return Boolean(val);
+}
 
+console.log(toBoolean(""));        // false
+console.log(toBoolean("hello"));   // true
+console.log(toBoolean(0));         // false
+console.log(toBoolean(NaN));       // false
+console.log(toBoolean(5));         // true
+console.log(toBoolean([]));        // false
+console.log(toBoolean([1]));       // true
+console.log(toBoolean({}));        // false
+console.log(toBoolean({ a: 1 }));  // true
+console.log(toBoolean(false));     // false
+console.log(toBoolean(true));      // true
+console.log(toBoolean(null));      // false
+console.log(toBoolean(undefined)); // false
