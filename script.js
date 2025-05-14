@@ -84,6 +84,7 @@ console.log({} + []); // object // in node js is 0
 console.log({} + {}); // object object
 
 function toBoolean(val) {
+  if (val === null || val === undefined) return false;
   if (typeof val === "string") return !(val === "");
   if (typeof val === "number") return val !== 0 && !Number.isNaN(val);
   if (typeof val === "object") return !(Object.keys(val).length === 0);
