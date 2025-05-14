@@ -77,3 +77,10 @@ function isEmpty(val) {
 }
 
 console.log(isEmpty({}));
+
+console.log([] + []); // empty string cause [] is ''
+console.log([] + {}); // object Object toString returns object
+console.log({} + []); // object // in node js is 0
+console.log({} + {}); // object object
+
+
