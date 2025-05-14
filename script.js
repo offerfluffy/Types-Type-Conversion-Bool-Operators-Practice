@@ -34,3 +34,11 @@ console.log(testTruthyFalsy(" "));
 console.log(testTruthyFalsy([]));
 console.log(testTruthyFalsy({}));
 console.log(testTruthyFalsy(null));
+
+function greet(name) {
+  return `Hello, ${name || "stranger"}`;
+}
+
+console.log(greet("Alice"));
+console.log(greet(""));
+console.log(greet(null));
