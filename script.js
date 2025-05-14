@@ -55,13 +55,25 @@ function explainComparison(a, b) {
   return {
     result: a == b,
     typeA: typeof a,
-    typeB: typeof b
-  }
+    typeB: typeof b,
+  };
 }
 
 console.log(explainComparison(false, 0)); // 0 flasy
 console.log(explainComparison("", 0)); // empty string and 0 are falsy
 console.log(explainComparison(null, undefined)); // equal in non strict equality
-console.log(explainComparison([], false)); 
+console.log(explainComparison([], false));
 // [] converts to empty string and its flasy
-console.log(explainComparison([1], 1)); // [1] converts to 1 
+console.log(explainComparison([1], 1)); // [1] converts to 1
+
+function isEmpty(val) {
+  if (val == null) return true;
+  if (typeof val === "boolean") return !val;
+  if (typeof val === "number") return val === 0 || Number.isNaN(val);
+  if (typeof val === "string") return val.trim() === "";
+  if (Array.isArray(val)) return val.length === 0;
+  if (typeof val === "object") return Object.keys(val).length === 0;
+  return false;
+}
+
+console.log(isEmpty({}));
