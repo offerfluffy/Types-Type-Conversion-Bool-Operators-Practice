@@ -42,3 +42,11 @@ function greet(name) {
 console.log(greet("Alice"));
 console.log(greet(""));
 console.log(greet(null));
+
+function getCity(user) {
+  return user && user.address && user.address.city;
+}
+
+console.log(getCity({ address: { city: "Kyiv" } }));
+console.log(getCity({}));
+console.log(getCity(null));
